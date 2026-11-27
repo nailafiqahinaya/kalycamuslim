@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigasi Muslim.or.id dengan Image Logo</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #A0A0B8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header & Logo */
+    .top-header {
+      background-color: #ffffff;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Wrapper untuk Logo Image dan Teks */
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    /* Ukuran gambar logo bisa diatur di sini */
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #000040;
+      line-height: 1.2;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .btn-donasi {
+      background-color: #04083D;
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-donasi:hover {
+      background-color: #090C9E;
+    }
+
+    /* Bar Navigasi Utama */
+    .navbar {
+      background-color: #75A3FF;
+      padding: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: block;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: #070361;
+    }
+
+    /* Dropdown Menu (Kategori) */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      min-width: 210px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      list-style: none;
+      border-top: 3px solid #d4af37;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 16px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #f4f6f9;
+      color: #0d5c3e;
+      padding-left: 20px;
+    }
+
+    /* Form Pencarian di Kanan Navigasi */
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-box button {
+      padding: 6px 12px;
+      border: none;
+      background-color: #82A2BD;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .search-box button:hover {
+      background-color: #b8962e;
+    }
+
+    /* Kontainer Konten & Penjelasan Rata Kiri-Kanan */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .container h1 {
+      color: #09195C;
+      margin-bottom: 15px;
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    /* Pengaturan Rata Kiri-Kanan (Justify) */
+    .penjelasan-justify {
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    /* Responsif untuk Layar Kecil / HP */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 5%;
+      }
+      .nav-menu {
+        flex-direction: column;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        background-color: #0a4931;
+      }
+      .dropdown-menu li a {
+        color: #e0e0e0;
+        padding-left: 30px;
+        border-bottom: 1px solid #0d5c3e;
+      }
+      .search-box {
+        margin-top: 10px;
+      }
+      .search-box input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bagian Atas (Logo Image & Tombol Donasi) -->
+  <header class="top-header">
+    <a href="#" class="brand-wrapper">
+      <!-- Menggunakan tag <img> agar logo mudah diganti/diedit file aslinya -->
+      <img src="Moonlit Mosque and Open Quran.png" alt="kalyca muslim sas" class="brand-logo">
+
+      <!-- Teks Judul & Slogan -->
+      <div class="brand-text">
+        <span class="brand-title">kalyca muslim sas</span>
+        <span class="brand-tagline">Memurnikan Aqidah Menebarkan Sunnah</span>
+      </div>
+    </a>
+
+    <a href="#donasi" class="btn-donasi">Donasi Dakwah</a>
+  </header>
+
+  <!-- Navigasi Utama -->
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="INDEX.HTML" class="nav-link">Beranda</a></li>
+      
+    
+
+      <li class="nav-item"><a href="keutamaan.html" class="nav-link">keutamaan sholat</a></li>
+      <li class="nav-item"><a href="sifat.html" class="nav-link">sifat sholat nabi</a></li>
+      <li class="nav-item"><a href="tata.html" class="nav-link">tata cara sholat</a></li>
+      <li class="nav-item"><a href="12.html" class="nav-link">12 doa iftitah</a></li>
+	  <li class="nav-item"><a href="dzikir.html" class="nav-link">Dzikir setelah sholat</a></li>
+    </ul>
+
+    <!-- Kotak Pencarian -->
+    <form class="search-box" action="#" method="GET">
+      <input type="text" placeholder="Cari artikel...">
+      <button type="submit">Cari</button>
+    </form>
+  </nav>
+
+  <!-- Area Konten dengan Penjelasan Rata Kiri-Kanan -->
+  <main class="container">
+    <h1>tata cara sholat sesuai sunnah</h1>
+   <center><img src="tata cara shalat.png" width="500" height="300"></center>
+    <p class="penjelasan-justify">
+	<h1>TATA CARA SHOLAT SESUAI SUNNAH NABI<h1/>
+    <h2>1. Doa Iftitah</h2>
+
+<p class="penjelasan">
+Bacaan yang kita baca ketika salat di antaranya adalah doa iftitah. Doa ini dibaca setelah melakukan takbiratul ihram, yaitu takbir pembuka yang merupakan rukun salat dan menandakan dimulainya salat.
+</p>
+
+<p class="penjelasan">
+Terdapat berbagai macam doa iftitah yang dicontohkan oleh Rasulullah, akan tetapi salah satu yang paling masyhur adalah doa berikut.
+</p>
+
+<div class="arab">
+اللَّهُمَّ بَاعِدْ بَيْنِي وَبَيْنَ خَطَايَايَ كَمَا بَاعَدتَ بَيْنَ الْمَشْرِقِ وَالْمَغْرِبِ، اللَّهُمَّ نَقِّنِي مِنْ خَطَايَايَ كَمَا يُنَقَّى الثَّوْبُ الْأَبْيَضُ مِنَ الدَّنَسِ، اللَّهُمَّ اغْسِلْنِي مِنْ خَطَايَايَ بِالثَّلْجِ وَالْمَاءِ وَالْبَرَدِ
+</div>
+
+<div class="latin">
+Allahumma baa‘id bainî wa baina khathâyaaya kamâ bâ‘adta baina al-masyriki wal-maghrib.
+
+Allahumma naqqinî min khathâyaaya kamâ yunaqqats-tsaubul-abyadhu minad-danas.
+
+Allahum-magh-silnî min khathâyaaya bits-tsalji wal mâ’i wal barad.
+</div>
+
+<div class="arti">
+“Ya Allah, jauhkanlah antara aku dan kesalahan-kesalahanku sebagaimana Engkau menjauhkan antara timur dan barat. Ya Allah, bersihkanlah aku dari kesalahan-kesalahanku sebagaimana kain putih dibersihkan dari kotoran. Ya Allah, cucilah aku dari kesalahan-kesalahanku dengan air, salju, dan embun.”
+</div>
+
+<p class="source">HR. Bukhari</p>
+
+<p class="penjelasan">
+Membaca doa iftitah merupakan salah satu sunah qauliyah (ucapan) yang terdapat dalam salat.
+</p>
+</section>
+
+<!-- AL FATIHAH -->
+<section class="card">
+<h2>2. Membaca Surah Al-Fatihah</h2>
+
+<p class="penjelasan">
+Setelah membaca doa iftitah, selanjutnya membaca surah Al-Fatihah. Khusus untuk rakaat pertama, diawali terlebih dahulu dengan membaca ta'awudz sebelum membaca basmalah dan surah Al-Fatihah.
+</p>
+
+<h3>Bacaan Ta'awudz</h3>
+
+<div class="arab">
+أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ
+</div>
+
+<div class="latin">
+A‘uudzu billâhi minasy-syaithânir-rajîm.
+</div>
+
+<div class="arti">
+“Aku berlindung kepada Allah dari godaan setan yang terkutuk.”
+</div>
+
+<p class="source">HR. Abu Dawud</p>
+
+<h3>Keutamaan Membaca Al-Fatihah</h3>
+
+<p class="penjelasan">
+Bacaan surah Al-Fatihah ketika salat merupakan rukun dalam salat sebagaimana dalam sebuah hadis, Rasulullah shallallahu ‘alaihi wasallam bersabda:
+</p>
+
+<div class="arab">
+لَا صَلَاةَ لِمَنْ لَمْ يَقْرَأْ بِفَاتِحَةِ الْكِتَابِ
+</div>
+
+<div class="arti">
+“Tidak sah salatnya orang yang tidak membaca surah Al-Fatihah.”
+</div>
+
+<p class="source">HR. Bukhari</p>
+
+<p class="penjelasan">
+Oleh karena itu, penting bagi kita untuk hafal dan juga menguasai bacaan beserta hukum tajwid yang baik ketika membaca surah Al-Fatihah.
+</p>
+</section>
+
+<!-- AYAT AL QURAN -->
+<section class="card">
+<h2>3. Membaca Ayat Al-Qur'an</h2>
+
+<p class="penjelasan">
+Setelah membaca surah Al-Fatihah, selanjutnya adalah membaca ayat dalam Al-Qur'an. Tidak ada dalil yang mengharuskan membaca surah atau ayat tertentu ketika salat, sehingga bisa membaca ayat atau surah apa pun sesuai dengan kemampuan.
+</p>
+
+<p class="penjelasan">
+Akan tetapi, ada beberapa bacaan surah yang dibaca Rasulullah ketika salat dan juga beberapa sunah untuk membaca surah tertentu di waktu-waktu tertentu.
+</p>
+
+<p class="penjelasan">
+Di antara bacaan ayat Al-Qur'an yang dicontohkan Rasulullah shallallahu ‘alaihi wasallam adalah membaca surah yang pendek ketika salat Maghrib, serta membaca surah Al-A'la dan Al-Ghasiyyah ketika salat Jumat, dan lain sebagainya.
+</p>
+</section>
+
+<!-- RUKUK -->
+<section class="card">
+<h2>4. Bacaan Ketika Rukuk</h2>
+
+<p class="penjelasan">
+Ketika rukuk, kita diwajibkan untuk membaca doa ini minimal satu kali.
+</p>
+
+<div class="arab">
+سُبْحَانَ رَبِّيَ الْعَظِيمِ
+</div>
+
+<div class="latin">
+Subḥāna rabbiyal-‘aẓīm.
+</div>
+
+<div class="arti">
+“Maha Suci Tuhanku Yang Maha Agung.”
+</div>
+
+<p class="source">HR. Ahmad</p>
+
+<p class="penjelasan">
+Adapun membaca lebih dari satu kali diperbolehkan dan merupakan sunah.
+</p>
+</section>
+
+<!-- I'TIDAL -->
+<section class="card">
+<h2>5. Bacaan I'tidal</h2>
+
+<p class="penjelasan">
+Setelah rukuk, kita lanjutkan ke gerakan i'tidal. Bacaan yang dibaca ketika mulai i'tidal adalah:
+</p>
+
+<div class="arab">
+سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ
+</div>
+
+<div class="latin">
+Sami‘allāhu liman ḥamidah.
+</div>
+
+<div class="arti">
+“Allah mendengar siapa saja yang memuji-Nya.”
+</div>
+
+<p class="penjelasan">
+Bacaan ini dibaca oleh imam atau orang yang salat munfarid (sendiri). Adapun makmum tidak perlu membacanya. Setelah imam membaca bacaan di atas, makmum bisa membaca:
+</p>
+
+<div class="arab">
+رَبَّنَا وَلَكَ الْحَمْدُ
+</div>
+
+<div class="latin">
+Rabbanā wa lakal-ḥamd.
+</div>
+
+<div class="arti">
+“Wahai Rabb kami, bagi-Mu segala pujian.”
+</div>
+
+<p class="penjelasan">
+Bacaan tersebut dibaca oleh imam, makmum, atau orang yang salat sendiri. Selain itu, ketika i'tidal kita juga bisa membaca doa tambahan, yaitu:
+</p>
+
+<div class="arab">
+مِلْءَ السَّمَاوَاتِ وَمِلْءَ الْأَرْضِ، وَمِلْءَ مَا شِئْتَ مِنْ شَيْءٍ بَعْدُ
+</div>
+
+<div class="latin">
+Mil’as-samāwāti wa mil’al-arḍi, wa mil’a mā syi’ta min syay’in ba‘du.
+</div>
+
+<div class="arti">
+“Sepenuh langit dan sepenuh bumi, dan sepenuh apa saja yang Engkau kehendaki sesudah itu.”
+</div>
+
+<p class="source">HR. Bukhari</p>
+</section>
+
+<!-- SUJUD -->
+<section class="card">
+<h2>6. Bacaan Sujud</h2>
+
+<p class="penjelasan">
+Ketika sujud kita membaca:
+</p>
+
+<div class="arab">
+سُبْحَانَ رَبِّيَ الْأَعْلَى
+</div>
+
+<div class="latin">
+Subḥāna rabbiyal-a‘lā.
+</div>
+
+<div class="arti">
+“Maha Suci Tuhanku Yang Maha Tinggi.”
+</div>
+
+<p class="penjelasan">
+Bacaan ini wajib kita baca minimal sekali sebagaimana bacaan ketika rukuk. Adapun lebih dari satu kali, hukumnya adalah sunah sebagaimana hadis yang sudah disebutkan sebelumnya.
+</p>
+</section>
+
+<!-- DUDUK ANTARA DUA SUJUD -->
+<section class="card">
+<h2>7. Bacaan Ketika Duduk di Antara Dua Sujud</h2>
+
+<p class="penjelasan">
+Bacaan ketika duduk di antara dua sujud ada beberapa versi yang diajarkan oleh Rasulullah shallallahu ‘alaihi wa sallam. Di antara versi bacaan yang ada adalah:
+</p>
+
+<div class="arab">
+رَبِّ اغْفِرْ لِي، رَبِّ اغْفِرْ لِي
+</div>
+
+<div class="latin">
+Rabbighfir lī, rabbighfir lī.
+</div>
+
+<div class="arti">
+“Wahai Tuhanku, ampunilah aku. Wahai Tuhanku, ampunilah aku.”
+</div>
+</section>
+
+<!-- TASYAHUD -->
+<section class="card">
+<h2>8. Bacaan Tasyahud</h2>
+
+<p class="penjelasan">
+Kita memasuki bagian akhir dari bacaan yang dibaca ketika salat, yaitu tasyahud. Tasyahud ada dua, untuk salat yang lebih dari dua rakaat terdapat tasyahud awal dan juga tasyahud akhir.
+</p>
+
+<p class="penjelasan">
+Bacaan yang dibaca pada tasyahud awal dan tasyahud akhir adalah:
+</p>
+
+<div class="arab">
+التَّحِيَّاتُ لِلَّهِ، وَالصَّلَوَاتُ، وَالطَّيِّبَاتُ. السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ. السَّلَامُ عَلَيْنَا وَعَلَىٰ عِبَادِ اللَّهِ الصَّالِحِينَ أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللَّهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ.
+</div>
+
+<div class="latin">
+At-tahiyyātu lillāh, waṣ-ṣalawātu, waṭ-ṭayyibāt. As-salāmu ‘alaika ayyuhan-nabiyyu wa raḥmatullāhi wa barakātuh. As-salāmu ‘alainā wa ‘alā ‘ibādillāhiṣ-ṣāliḥīn. Asyhadu allā ilāha illallāh, wa asyhadu anna Muḥammadan ‘abduhū wa rasūluh.
+</div>
+
+<div class="arti">
+“Segala penghormatan, segala selawat, dan segala kebaikan adalah milik Allah. Keselamatan atasmu wahai Nabi, dan rahmat serta berkah Allah. Keselamatan atas kami dan atas hamba-hamba Allah yang saleh. Aku bersaksi bahwa tidak ada tuhan yang berhak disembah selain Allah, dan aku bersaksi bahwa Muhammad adalah hamba dan utusan-Nya.”
+</div>
+</section>
+
+<!-- SHALAWAT -->
+<section class="card">
+<h2>9. Bacaan Selawat Nabi</h2>
+
+<p class="penjelasan">
+Untuk tasyahud akhir, ditambahkan dengan selawat kepada Nabi shallallahu ‘alaihi wa sallam. Adapun bacaan selawatnya adalah sebagai berikut:
+</p>
+
+<div class="arab">
+اللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ. اللَّهُمَّ بَارِكْ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ.
+</div>
+
+<div class="latin">
+Allāhumma ṣalli ‘alā Muḥammad wa ‘alā āli Muḥammad, kamā ṣallaita ‘alā Ibrāhīm wa ‘alā āli Ibrāhīm, innaka ḥamīdun majīd.
+
+Allāhumma bārik ‘alā Muḥammad wa ‘alā āli Muḥammad, kamā bārakta ‘alā Ibrāhīm wa ‘alā āli Ibrāhīm, innaka ḥamīdun majīd.
+</div>
+
+<div class="arti">
+“Ya Allah, limpahkanlah selawat kepada Nabi Muhammad dan keluarga Nabi Muhammad, sebagaimana Engkau telah melimpahkan selawat kepada Nabi Ibrahim dan keluarga Nabi Ibrahim. Sesungguhnya Engkau Maha Terpuji lagi Maha Mulia. Ya Allah, berikanlah keberkahan kepada Nabi Muhammad dan keluarga Nabi Muhammad, sebagaimana Engkau telah memberkahi Nabi Ibrahim dan keluarga Nabi Ibrahim. Sesungguhnya Engkau Maha Terpuji lagi Maha Mulia.”
+</div>
+</section>
+
+<!-- DOA DALAM SALAT -->
+<section class="card">
+<h2>10. Doa-Doa yang Bisa Dibaca Ketika Salat</h2>
+
+<p class="penjelasan">
+Salat merupakan ibadah agung yang merupakan waktu seorang hamba menghadap kepada Rabb-nya. Tentunya, salat merupakan waktu yang sangat baik untuk berdoa. Rasulullah mengajarkan para sahabatnya beberapa doa yang disunahkan untuk dibaca ketika salat.
+</p>
+
+<h3>Doa Ketika Rukuk dan Sujud</h3>
+
+<div class="arab">
+سُبُّوحٌ قُدُّوسٌ، رَبُّ الْمَلَائِكَةِ وَالرُّوحِ
+</div>
+
+<div class="latin">
+Subbūḥun quddūsun, rabbul-malā’ikati war-rūḥ.
+</div>
+
+<div class="arti">
+“Maha Suci, Maha Suci, Rabb (Tuhan) para malaikat dan ar-Ruh (Jibril).”
+</div>
+
+<p class="source">HR. Muslim</p>
+
+<p class="penjelasan">
+Doa ini Rasulullah shallallahu ‘alaihi wa sallam ajarkan untuk dibaca ketika rukuk dan sujud.
+</p>
+
+<h3>Doa Memohon Perlindungan dari Empat Perkara</h3>
+
+<p class="penjelasan">
+Doa ini bisa dibaca setelah selesai tasyahud akhir. Dalam sebuah hadis yang diriwayatkan oleh Imam Abu Dawud, Rasulullah menganjurkan untuk berlindung dari empat perkara.
+</p>
+
+<div class="arab">
+اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ، وَمِنْ عَذَابِ الْقَبْرِ، وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ، وَمِنْ شَرِّ فِتْنَةِ الْمَسِيحِ الدَّجَّالِ
+</div>
+
+<div class="latin">
+Allāhumma innī a‘ūdzu bika min ‘adzābi jahannam, wa min ‘adzābil-qabr, wa min fitnatil-maḥyā wal-mamāt, wa min sharri fitnatil-masīḥid-dajjāl.
+</div>
+
+<div class="arti">
+“Ya Allah, aku berlindung kepada-Mu dari siksa neraka Jahanam, dari siksa kubur, dari fitnah kehidupan dan kematian, dan dari kejahatan fitnah al-Masih Dajjal.”
+</div>
+
+<p class="source">HR. Abu Dawud</p>
+
+<h3>Berdoa Sebelum Salam</h3>
+
+<p class="penjelasan">
+Setelah itu, jika ingin berdoa dengan doa yang lain sebelum kita salam, maka diperbolehkan. Hal itu sebagaimana sabda Rasulullah shallallahu ‘alaihi wa sallam:
+</p>
+
+<div class="arab">
+ثُمَّ لِيَتَخَيَّرْ أَحَدُكُمْ مِنَ الدُّعَاءِ أَعْجَبَهُ إِلَيْهِ، فَلْيَدْعُ بِهِ رَبَّهُ عَزَّ وَجَلَّ
+</div>
+
+<div class="arti">
+“Kemudian hendaklah salah seorang di antara kalian memilih doa yang paling disukainya, lalu memohon dengannya kepada Rabb-nya ‘Azza wa Jalla.”
+</div>
+
+    </p>
+
+    <p class="penjelasan-justify">
+      Jika di kemudian hari Anda ingin mengubah atau mengedit logo tersebut, Anda tidak perlu mengubah kode HTML di atas. Cukup edit file gambar logonya atau ganti dengan file baru yang memiliki nama yang sama, maka logo pada tampilan web akan otomatis berubah.
+    </p>
+  </main>
+
+</body>
+</html>
